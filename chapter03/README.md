@@ -29,7 +29,11 @@
 ### elif
 - elif를 이용하여 계절구하기 
 
-### ex02_2
+### ex02_3
 ### if 조건문을 효율적으로 사용하기 
 - 조건으로 구현하기 1,2
 
+### ex02_4
+- False로 변환되는 값
+- Pass 키워드 
+- raise NotImplementedError 
