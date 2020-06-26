@@ -12,3 +12,9 @@
 
 * [Chapter04](chapter04)
     - 리스트와 반복문
+
+* [Chapter05](chapter05)
+    - 함수
+
+* [Chapter06](chapter06)
+    - 예외 처리 
