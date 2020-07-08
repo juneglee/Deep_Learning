@@ -24,3 +24,5 @@
 ### Deep-Learning-from-Scratch
 
 * [Chapter01](Deep-Learning/chapter01) - 퍼셉트론
+
+* [Chapter02](Deep-Learning/chapter02) - 선형회귀(linear regression)
