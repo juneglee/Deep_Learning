@@ -8,8 +8,8 @@
 # 불 : True, False / 친구의 로그인 상태 
 
 #자료의 형식을 확인 할때는 type() 함수를 사용 
-print(type("안녕하세요"))
-print(type(273))
+print(type("안녕하세요")) # <class 'str'>
+print(type(273)) # <class 'int'>
 
 # 문자열 만들기 
 print("#하나만 출력합니다") # 샾을 안에서 사용해도 주석으로 처리하지 않고 문자열로 취급
