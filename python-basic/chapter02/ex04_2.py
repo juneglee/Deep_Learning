@@ -42,7 +42,15 @@ print("메롱" in "안녕하세요") # False
 e = "10 20 30 40 50".split()
 print(e) # ['10', '20', '30', '40', '50'] # 실행결과로 리스트(list)가 나옴
 
+# 입력 값을 정수로 변환 
+f, g = input('숫자를 두 개 입력하세요 : ').split()
+f = int(f)
+g = int(g)
+print(f + g) # 10 20 입력 30 출력
 
+# map을 사용하여 정수로 변환 
+h, i = map(int, input('숫자를 두 개 입력하세요 : ').split())
+print(h + i)
 
 
 
