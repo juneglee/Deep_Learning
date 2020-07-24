@@ -21,8 +21,28 @@
 
 * [Chapter01](machine-deep-learning/chapter01) - 크롤링 & 스크레이핑 (docker)
 
-### Deep-Learning-from-Scratch
+### Deep-Learning (모두의 딥러닝 & 자연어 처리)
 
-* [Chapter01](Deep-Learning/chapter01) - 퍼셉트론
+* [Chapter01](Deep-Learning/Deep-Learning/chapter02) - 퍼셉트론
 
-* [Chapter02](Deep-Learning/chapter02) - 선형회귀(linear regression)
+* [Chapter02](Deep-Learning/Deep-Learning/chapter02) - 선형회귀(linear regression) & 로지스틱 회귀 (logistic regression)
+
+* [Chapter03](Deep-Learning/Deep-Learning/chapter03) - 다층 퍼셉트론
+
+* [Chapter04](Deep-Learning/Deep-Learning/chapter04) - 자연어 처리(natural language processing: NLP)
+
+### Deep-Learning-from-Scratch (밑바닥 부터 시작하는 딥러닝)
+
+* [Chapter01](Deep-Learning/scratch/chapter01) - 퍼셉트론
+
+* [Chapter02](Deep-Learning/scratch/chapter02) - 활성화 함수
+
+* [Chapter03](Deep-Learning/scratch/chapter03) - 신경망 
+
+* [Chapter04](Deep-Learning/scratch/chapter04) - 오차역전파
+
+* [Chapter05](Deep-Learning/scratch/chapter05) - 신경망 
+
+* [Chapter06](Deep-Learning/scratch/chapter06) - 합성곱 신경망 (convolution neural network: CNN)
+
+* [Chapter07](Deep-Learning/scratch/chapter07) - 심층신경망
