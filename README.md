@@ -23,13 +23,13 @@
 
 ### Deep-Learning (모두의 딥러닝 & 자연어 처리)
 
-* [Chapter01](Deep-Learning/Deep-Learning/chapter02) - 퍼셉트론
+* [Chapter01](Deep-Learning/deepForAll/chapter02) - 퍼셉트론
 
-* [Chapter02](Deep-Learning/Deep-Learning/chapter02) - 선형회귀(linear regression) & 로지스틱 회귀 (logistic regression)
+* [Chapter02](Deep-Learning/deepForAll/chapter02) - 선형회귀(linear regression) & 로지스틱 회귀 (logistic regression)
 
-* [Chapter03](Deep-Learning/Deep-Learning/chapter03) - 다층 퍼셉트론
+* [Chapter03](Deep-Learning/deepForAll/chapter03) - 다층 퍼셉트론
 
-* [Chapter04](Deep-Learning/Deep-Learning/chapter04) - 자연어 처리(natural language processing: NLP)
+* [Chapter04](Deep-Learning/deepForAll/chapter04) - 자연어 처리(natural language processing: NLP)
 
 ### Deep-Learning-from-Scratch (밑바닥 부터 시작하는 딥러닝)
 
