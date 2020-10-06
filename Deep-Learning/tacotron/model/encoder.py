@@ -1,16 +1,12 @@
 from torch import nn
 from torch.nn import functional as F
-from hparams import hparams as hps
 from model.layers import ConvNorm
+from hparams import hparams as hps
+
 
 class Encoder(nn.Module):
     def __init__(self):
         super(Encoder, self).__init__()
-
-        # self.conv_1d_first = nn.Conv1d(512, 512, kernel_size=0, stride=0, padding=0,
-        #                                dilation=1)
-        # self.conv_1d_second =
-        # self.conv_1d_third =
 
         convolutions = []
         for _ in range(hps.encoder_n_convolutions):
@@ -19,7 +15,7 @@ class Encoder(nn.Module):
                          hps.encoder_embedding_dim,
                          kernel_size=hps.encoder_kernel_size,
                          stride=1, padding=int((hps.encoder_kernel_size - 1) / 2),
-                         dilation=1),
+                         dilation=1, w_init_gain='relu'),
                 nn.BatchNorm1d(hps.encoder_embedding_dim))
             convolutions.append(conv_layer)
 
@@ -27,7 +23,7 @@ class Encoder(nn.Module):
 
         self.lstm = nn.LSTM(hps.encoder_embedding_dim,
                             int(hps.encoder_embedding_dim / 2), num_layers=1,
-                            batch_first= True, bidirectional= True)
+                            batch_first=True, bidirectional=True)
 
     def forward(self, inputs, input_lengths):
         x = inputs
@@ -49,5 +45,12 @@ class Encoder(nn.Module):
         x, _ = nn.utils.rnn.pad_packed_sequence(x, batch_first=True)
 
         # print('lstm output : ', x.size())
+        # hidden : (vec : hidden state, vec)
+        # hidden state : (2, B, LSTM_DIM : 256)
+        # hidden = hidden[0]
+        #
+        # encoder_context = hidden.view(hidden.size(1), -1)
 
+        # x : (B, Seq_len, forward_dim + backward_dim)
         return x
+        # return encoder_context
