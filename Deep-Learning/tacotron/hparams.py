@@ -26,7 +26,7 @@ class hparams:
     encoder_dropout_p = 0.5
 
     # decoder parameters
-    n_frames_per_step = 3
+    n_frames_per_step = 1
     decoder_rnn_dim = 1024
 
     # attention parameters
@@ -37,3 +37,27 @@ class hparams:
     prenet_out_sizes = [256, 256]
     prenet_output_dim = prenet_out_sizes[-1]
     prenet_dropout_p = 0.5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

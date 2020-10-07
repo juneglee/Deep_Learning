@@ -2,10 +2,11 @@ import torch
 from torch import nn
 from model.encoder import Encoder
 from model.decoder import Decoder
-# from model.modules import Postnet
+from model.modules import PostNet
 from hparams import hparams as hps
 from math import sqrt
 from utils import get_mask_from_lengths
+
 
 class Tacotron2(nn.Module):
     def __init__(self):
@@ -18,14 +19,21 @@ class Tacotron2(nn.Module):
 
         self.encoder = Encoder()
         self.decoder = Decoder()
+        self.postnet = PostNet()
 
-    def parse_outputs(self, mel_outputs, output_lengths):
+    def parse_outputs(self, mel_outputs, mel_outputs_postnet, gate_outputs, output_lengths):
         mask = ~get_mask_from_lengths(output_lengths, pad=True)
         mask = mask.expand(80, mask.size(0), mask.size(1))
         mask = mask.permute(1, 0, 2)
+        # mask : (B, 80, Frames)
 
         mel_outputs.data.masked_fill_(mask, 0.0)
-        return mel_outputs
+        mel_outputs_postnet.data.masked_fill_(mask, 0.0)
+
+        # gate outputs : (B, Frames // 3)
+        slice_mask = torch.arange(0, mask.size(2), 3)
+        gate_outputs.data.masked_fill_(mask[:, 0, slice_mask], 1e3)
+        return mel_outputs, mel_outputs_postnet, gate_outputs
 
     def forward(self, inputs):
         text_inputs, input_lengths, mel_targets, output_lengths = inputs
@@ -41,13 +49,29 @@ class Tacotron2(nn.Module):
         encoder_outputs = self.encoder(character_embedding, input_lengths)
         # print('encoder output size : ', encoder_outputs.size())
 
-        self.decoder(encoder_outputs, mel_targets, input_lengths)
+        mel_outputs, alignments, gate_outputs = self.decoder(encoder_outputs,
+                                               mel_targets,
+                                               input_lengths)
+        mel_outputs_postnet = self.postnet(mel_outputs)
+        mel_outputs_postnet = mel_outputs + mel_outputs_postnet
 
-        # mel_outputs = self.parse_outputs(mel_outputs, output_lengths)
-        # return mel_outputs
+        mel_outputs, mel_outputs_postnet, gate_outputs = self.parse_outputs(mel_outputs, mel_outputs_postnet, gate_outputs, output_lengths)
+        return mel_outputs, mel_outputs_postnet, gate_outputs, alignments
+
+    def inference(self, inputs):
+        embedded_inputs = self.embedding(inputs).transpose(1, 2)
+        encoder_outputs = self.encoder.inference(embedded_inputs)
+        mel_outputs, alignments, gate_outputs = self.decoder.inference(
+            encoder_outputs)
+
+        mel_outputs_postnet = self.postnet(mel_outputs)
+        mel_outputs_postnet = mel_outputs + mel_outputs_postnet
+
+        return mel_outputs, mel_outputs_postnet, alignments
 
 if __name__ == '__main__':
     from feeder.speech_dataset import SpeechDataset, SpeechCollate
+
     dataset = SpeechDataset('../data/lj')
     collate_fn = SpeechCollate()
 

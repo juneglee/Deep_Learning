@@ -1,4 +1,3 @@
-
 import torch
 from torch import nn
 
@@ -54,3 +53,10 @@ if __name__ == '__main__':
     print(random_tensor.size())
     linear_vector = linear(random_tensor)
     print(linear_vector.size())
+
+
+
+
+
+
+

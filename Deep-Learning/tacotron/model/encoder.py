@@ -54,3 +54,25 @@ class Encoder(nn.Module):
         # x : (B, Seq_len, forward_dim + backward_dim)
         return x
         # return encoder_context
+
+    def inference(self, x):
+        for conv in self.convolutions:
+            x = F.dropout(F.relu(conv(x)), 0.5, self.training)
+
+        x = x.transpose(1, 2)
+
+        self.lstm.flatten_parameters()
+        outputs, _ = self.lstm(x)
+
+        return outputs
+
+
+
+
+
+
+
+
+
+
+
