@@ -1,21 +1,23 @@
-## study-python
-### 혼자 공부하는 파이썬 study
+## Deep-learning
+### NLP (Natural Langeage Processing) : 자연어 처리 
+* [Chapter01](Deep-Learning/NLP) - Natural Langeage Processing & Search Processing 
+    * from Preprocessing to Model (BERT & GPT) 
 
-* [Chapter01](python-basic/chapter01) - 파이썬 시작하기 
+### Tacotron2 (cpu version & Gpu version) 
+PyTorch implementation of [Natural TTS Synthesis By Conditioning
+Wavenet On Mel Spectrogram Predictions](https://arxiv.org/pdf/1712.05884.pdf). 
 
-* [Chapter02](python-basic/chapter02) - 자료형과 문자열
+This implementation includes **distributed** and **automatic mixed precision** support
+and uses the [LJSpeech dataset](https://keithito.com/LJ-Speech-Dataset/).
 
-* [Chapter03](python-basic/chapter03) - 조건문
+Distributed and Automatic Mixed Precision support relies on NVIDIA's [Apex] and [AMP].
 
-* [Chapter04](python-basic/chapter04) - 리스트와 반복문
+Visit our [website] for audio samples using our published [Tacotron 2] and
+[WaveGlow] models.
 
-* [Chapter05](python-basic/chapter05) - 함수
+* [Chapter01](Deep-Learning/tacotron) - voice processing (tacotron cpu) 
 
-* [Chapter06](python-basic/chapter06) - 예외 처리 
-
-* [Chapter07](python-basic/chapter07) - 클래스 
-
-* [Chapter08](python-basic/chapter08) - 모듈 
+* [Chapter01](Deep-Learning/tacotron_gpu) - voice processing (tacotron Gpu) 
 
 ### python-machine-deep-learning
 
@@ -46,3 +48,21 @@
 * [Chapter06](Deep-Learning/scratch/chapter06) - 합성곱 신경망 (convolution neural network: CNN)
 
 * [Chapter07](Deep-Learning/scratch/chapter07) - 심층신경망
+
+### 혼자 공부하는 파이썬 study
+
+* [Chapter01](python-basic/chapter01) - 파이썬 시작하기 
+
+* [Chapter02](python-basic/chapter02) - 자료형과 문자열
+
+* [Chapter03](python-basic/chapter03) - 조건문
+
+* [Chapter04](python-basic/chapter04) - 리스트와 반복문
+
+* [Chapter05](python-basic/chapter05) - 함수
+
+* [Chapter06](python-basic/chapter06) - 예외 처리 
+
+* [Chapter07](python-basic/chapter07) - 클래스 
+
+* [Chapter08](python-basic/chapter08) - 모듈 
